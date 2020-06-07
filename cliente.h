@@ -18,10 +18,12 @@ class Cliente{
         uint phone;
         string address;
 
+
+
     public:
-        DatosTarjeta();
-        DatosTarjeta(uint _ID, string n, uint _age, string e, uint p, string a);
-        DatosTarjeta(const DatosTarjeta &d_t);
+        Cliente();
+        Cliente(uint _ID, string n, uint _age, string e, uint p, string a);
+        Cliente(const Cliente &cl);
 
         uint getID();
         string getName();
@@ -29,13 +31,13 @@ class Cliente{
         string getEmail();
         uint getPhone();
         string getAdress();
-        void setEmail();
-        void setPhone();
-        void setAdress();
+        void setEmail(string e);
+        void setPhone(uint p);
+        void setAddress(string a);
 
 };
 
-    DatosTarjeta::DatosTarjeta(){
+    Cliente::Cliente(){
 
         ID = 0;
         name = "undefined";
@@ -45,7 +47,7 @@ class Cliente{
         address = "undefined";
     }
 
-    DatosTarjeta::DatosTarjeta(uint _ID, string n, uint _age, string e, uint p, string a){
+    Cliente::Cliente(uint _ID, string n, uint _age, string e, uint p, string a){
 
         ID = _ID;
         name = n;
@@ -56,66 +58,66 @@ class Cliente{
 
 }
 
-    DatosTarjeta::DatosTarjeta(const DatosTarjeta &d){
+    Cliente::Cliente(const Cliente &cl){
 
-        ID = d.ID;
-        name = d.name;
-        age = d.age;
-        email = d.email;
-        phone = d.phone;
-        address = d.address;
+        ID = cl.ID;
+        name = cl.name;
+        age = cl.age;
+        email = cl.email;
+        phone = cl.phone;
+        address = cl.address;
 
     }
 
-    uint DatosTarjeta::getID(){
+    uint Cliente::getID(){
 
         return ID;
 
     }
 
-    string DatosTarjeta::getName(){
+    string Cliente::getName(){
 
         return name;
 
     }
 
-    uint DatosTarjeta::getAge(){
+    uint Cliente::getAge(){
 
         return age;
 
     }
 
-    string DatosTarjeta::getEmail(){
+    string Cliente::getEmail(){
 
         return email;
 
     }
 
-    uint DatosTarjeta::getPhone(){
+    uint Cliente::getPhone(){
 
         return phone;
 
     }
 
-    string DatosTarjeta::getAdress(){
+    string Cliente::getAdress(){
 
         return address;
 
     }
 
-    void setEmail(string e){
+    void Cliente::setEmail(string e){
 
         email = e;
 
     }
 
-    void setPhone(uint p){
+    void Cliente::setPhone(uint p){
 
         phone = p;
 
     }
 
-    void setAddress(string a){
+    void Cliente::setAddress(string a){
 
         address = a;
 

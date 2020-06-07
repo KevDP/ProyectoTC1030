@@ -6,7 +6,7 @@
 
 using namespace std;
 
-enum recargas {uno, dos, tres, cuatro, cinco, seis};
+
 
 typedef unsigned int uint;
 
@@ -27,20 +27,20 @@ class Tarjeta{
 };
 
     Tarjeta::Tarjeta(){
-        CardID = 0;
+        cardID = 0;
         CVV = 0;
     }
 
     Tarjeta::Tarjeta(uint C_ID, uint _CVV, uint _balance){
 
-        CardID = C_ID;
+        cardID = C_ID;
         CVV = _CVV;
 
     }
 
     Tarjeta::Tarjeta(const Tarjeta &t){
 
-        CardID = t.CardID;
+        cardID = t.cardID;
         CVV = t.CVV;
 
     }
@@ -52,6 +52,21 @@ class Tarjeta{
         return CVV;
 
     }
+
+    void Tarjeta::pedirCVV(){
+            uint InCVV;
+            cout<<"Ingrese el CVV de su tarjeta \n ";
+            cin>>InCVV;
+            if(InCVV == getCVV()){       // Coincidir el CVV ingresado con el encapsulado.
+                cout<<"Ingresado con exito \n ";
+            }
+            else{
+                while(InCVV != getCVV()){        // Mientras no coincida, mandar� error y se pedir� de nuevo.
+                    cout<<"El CVV no coincide, intenta de nuevo \n ";
+                    cin>>InCVV;
+                }
+            }
+        ;}
 
 
 

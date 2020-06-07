@@ -6,117 +6,113 @@
 
 using namespace std;
 
-typedef enum Exists {"01", "02", "03", "04"};
 
 class Cuenta{
 
-    private:
-
-        uint token;
-        Exists Existentes;
-
     protected:
 
+        string password;
         uint balance;
-        recargas rCelular;
+        string question;
+        uint token;
+
 
     public:
 
+        Cuenta();
+        Cuenta(uint _balance, string pass, string quest);
+        Cuenta(const Cuenta &c);
+
         void depositar();
-        void pagarServicio();
         void retirar();
-        string recargar();
         uint getBalance();
         void setBalance(uint _balance);
-        uint getToken();
+        string getPassword();
+        void setPassword(string pass);
+        string getQuestion();
+        void setQuestion(string quest);
 
 
 
 };
 
-    uint Tarjeta::getToken(){
+        Cuenta::Cuenta(){
 
-        return token;
+            balance = 0;
+            password = "1234567890";
+            question = "none";
 
-    }
 
-    uint Tarjeta::getBalance(){
+        }
 
-        return balance;
+        Cuenta::Cuenta(uint _balance, string pass, string quest){
 
-    }
+            balance = _balance;
+            password = pass;
+            question = quest;
 
-    void Tarjeta::setBalance(uint _balance){
+        }
 
-        balance = _balance;
+        Cuenta::Cuenta(const Cuenta &c){
 
-    }
+            balance = c.balance;
 
-        void Tarjeta::depositar(){                  // Accion depositar
-        uint dCantidad;
-        cout<<"\n Cantidad que desea depositar $";
-        cin>>dCantidad;
-        //pedir_CVV();                // Para completar el deposito es necesario pedir el CVV
-        balance+=dCantidad; // Balance+= Balance + dCantidad
-        cout<<"\n El fondo es de: $"<<getBalance()<<endl;            // De esta manera, cada que se use un deposito de efectivo, se imprimir el Estado de cuenta actual.
-    }
+        }
 
-    void Tarjeta::retirar(){    // Accion retirar.
-        uint rCantidad;
-        cout<<"\n Cantidad que desea retirar: $";
-        cin>>rCantidad;        // Cantidad a retirar.
-        //pedir_CVV();            // Para retirar efectivo es necesario ingresar el CVV.
-        balance-=rCantidad; // Balance-= Balance - rCantidad.
-        cout<<"\n El fondo es de: $"<<getBalance()<<endl;            // De esta manera, cada que se use un retiro de efectivo, se desplegara el Estado de cuenta actual.
-    }
+        string Cuenta::getQuestion(){
 
-    void Tarjeta::pagarServicio(){
-        string motivo;
-        uint pCantidad;
-        cout<<"\n Ingrese el concepto de su pago de servicio en una palabra: ";
-        cin>>motivo;
-            cout<<"\n Cantidad que desea depositar $";
-            cin>>pCantidad;
+            return question;
+
+        }
+
+        void Cuenta::setQuestion(string quest){
+
+            question = quest;
+
+        }
+
+        string Cuenta::getPassword(){
+
+            return password;
+
+        }
+
+        void Cuenta::setPassword(string pass){
+
+            password = pass;
+
+        }
+
+        uint Cuenta::getBalance(){
+
+            return balance;
+
+        }
+
+        void Cuenta::setBalance(uint _balance){
+
+            balance = _balance;
+
+        }
+
+        void Cuenta::depositar(){                  // Accion depositar
+            uint dCantidad;
+                cout<<"\n Cantidad que desea depositar $";
+                cin>>dCantidad;
             //pedir_CVV();                // Para completar el deposito es necesario pedir el CVV
-        balance-=pCantidad; // Balance-= Balance -p_Cantidad
-        cout<<"\n El concepto de su pago fue: "<<motivo<<endl;
-        cout<<"\n El fondo es de: $"<<getBalance()<<endl;
+            balance+=dCantidad; // Balance+= Balance + dCantidad
+                cout<<"\n El fondo es de: $"<<getBalance()<<endl;            // De esta manera, cada que se use un deposito de efectivo, se imprimir el Estado de cuenta actual.
+            }
 
-}
+        void Cuenta::retirar(){    // Accion retirar.
+            uint rCantidad;
+                cout<<"\n Cantidad que desea retirar: $";
+                cin>>rCantidad;        // Cantidad a retirar.
+            //pedir_CVV();            // Para retirar efectivo es necesario ingresar el CVV.
+            balance-=rCantidad; // Balance-= Balance - rCantidad.
+                cout<<"\n El fondo es de: $"<<getBalance()<<endl;            // De esta manera, cada que se use un retiro de efectivo, se desplegara el Estado de cuenta actual.
+        }
 
-/*
-    string Tarjeta::recargar(){
-        string _rCelular;
-        cout<<"\n Elige la opción de recarga de la recarga: uno = $20, dos = $30, tres = $50, cuatro = $100, cinco = $200, seis = $500"<<endl;
-        cin>>_rCelular;
-        switch(rCelular){
-            case uno :
-                Balance-=20;
-                cout<<"\n El fondo es de: $"<<getBalance()<<endl;
-                return 0;
-            case dos :
-                Balance-=30;
-                cout<<"\n El fondo es de: $"<<getBalance()<<endl;
-                return 0;
-            case tres :
-                Balance-=50;
-                cout<<"\n El fondo es de: $"<<getBalance()<<endl;
-                return 0;
-            case cuatro :
-                Balance-=100;
-                cout<<"\n El fondo es de: $"<<getBalance()<<endl;
-                return 0;
-            case cinco :
-                Balance-=200;
-                cout<<"\n El fondo es de: $"<<getBalance()<<endl;
-                return 0;
-            case seis :
-                Balance-=500;
-                cout<<"\n El fondo es de: $"<<getBalance()<<endl;
-                return 0;
-            default : return "operación cancelada";
-    }
-}
-*/
+
 
 #endif // CUENTA_H
